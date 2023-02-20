@@ -15,6 +15,7 @@
 #include <atomic>//atomic_int
 #include <mutex>
 #include <condition_variable>
+#include <functional>
 
 
 //任务抽象基类
@@ -31,7 +32,16 @@ enum class PoolMode{
 //线程类型
 class Thread{
 public:
+    //线程函数对象类型
+    using ThreadFunc = std::function<void()>;
+    //线程构造
+    Thread(ThreadFunc func);
+    //线程析构
+    ~Thread();
+    //启动线程
+    void start();
 private:
+    ThreadFunc func_;
 };
 //线程池类型
 class ThreadPool{
@@ -42,6 +52,9 @@ public:
     //设置线程池的工作模式
     void setMode(PoolMode mode);
     
+    //设置初始的线程数量
+    //void setInitThreadSize(int size);
+    
     //设置task任务队列上限阈值
     void setTaskQueMaxThreshHold(int threshhold);
     
@@ -49,10 +62,14 @@ public:
     void submitTask(std::shared_ptr<Task> sp);
     
     //开启线程池
-    void start();
+    void start(int initThreadSize = 4);
     
     ThreadPool(const ThreadPool&) = delete;//=delete表示这个成员函数不能被再调用，const ThreadPool&为拷贝构造函数，即禁止拷贝线程池
-    ThreadPool& operator=(const ThreadPool&) = delete;//禁止重载
+    ThreadPool& operator=(const ThreadPool&) = delete;//禁止重载赋值
+    
+private:
+    //定义线程函数
+    void threadFunc(); 
 private:
     std::vector<Thread*> threads_; //线程列表
     size_t initThreadSize_; //初始的线程数量
