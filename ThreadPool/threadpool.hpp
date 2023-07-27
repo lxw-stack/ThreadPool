@@ -2,7 +2,7 @@
 //  threadpool.hpp
 //  ThreadPool
 //
-//  Created by 李笑微 on 2023/2/19.
+//  Created by vivi on 2023/2/19.
 //
 
 #ifndef threadpool_hpp
@@ -16,6 +16,7 @@
 #include <mutex>
 #include <condition_variable>
 #include <functional>
+#include <thread>
 #include <unordered_map>
 
 //Any类型：可以接收任意数据的类型
@@ -65,23 +66,28 @@ private:
 
 class Semaphore{
 public:
-    Semaphore(int limit = 0):resLimit(limit){
+    Semaphore(int limit = 0):resLimit(limit), isExit_(false){
         
     }
-    ~Semaphore() = default;
+    ~Semaphore(){
+        isExit_ = true;
+    }
     //获取一个信号资源量
     void wait(){
+        if(isExit_) return;
         std::unique_lock<std::mutex> lock(mtx_);
         cond_.wait(lock,[&]()->bool {return resLimit > 0;});
         resLimit--;
     }
     //增加一个信号资源量
     void post(){
+        if(isExit_) return;
         std::unique_lock<std::mutex> lock(mtx_);
         resLimit++;
         cond_.notify_all();
     }
 private:
+    std::atomic_bool isExit_;
     int resLimit;
     std::mutex mtx_;
     std::condition_variable cond_;
@@ -173,7 +179,7 @@ public:
     Result submitTask(std::shared_ptr<Task> sp);
     
     //开启线程池
-    void start(int initThreadSize = 4);
+    void start(int initThreadSize = std::thread::hardware_concurrency());//hardware_concurrency本机cpu核数量
     
     ThreadPool(const ThreadPool&) = delete;//=delete表示这个成员函数不能被再调用，const ThreadPool&为拷贝构造函数，即禁止拷贝线程池
     ThreadPool& operator=(const ThreadPool&) = delete;//禁止重载赋值

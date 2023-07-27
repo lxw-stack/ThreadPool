@@ -2,7 +2,7 @@
 //  main.cpp
 //  ThreadPool
 //
-//  Created by 李笑微 on 2022/10/18.
+//  Created by vivi on 2022/10/18.
 //
 
 #include <iostream>
@@ -43,10 +43,30 @@ private:
     int begin_;
     int end_;
 };
-    
+
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello, World!\n";
+    {
+        std::cout << "Hello, World!\n";
+        ThreadPool pool;
+        pool.setMode(PoolMode::MODE_CACHED);
+        //开始启动线程池
+        pool.start(4);
+        Result res1 = pool.submitTask(std::make_shared<MyTask>(1,100));
+        Result res2 = pool.submitTask(std::make_shared<MyTask>(101,200));
+        Result res3 = pool.submitTask(std::make_shared<MyTask>(201,300));
+        Result res4 = pool.submitTask(std::make_shared<MyTask>(1,100));
+        Result res5 = pool.submitTask(std::make_shared<MyTask>(101,200));
+        Result res6 = pool.submitTask(std::make_shared<MyTask>(201,300));
+        uLong sum1 = res1.get().cast_<uLong>();
+        uLong sum2 = res2.get().cast_<uLong>();
+        uLong sum3 = res3.get().cast_<uLong>();
+        std::cout << sum1 + sum2 + sum3 << std::endl;
+    }
+    std::cout << "main over" << std::endl;
+    getchar();
+    
+#if 0
     //问题：ThreadPool对象析构以后，怎么样把线程池相关的线程资源全部回收
     {
         ThreadPool pool;
@@ -82,6 +102,7 @@ int main(int argc, const char * argv[]) {
 //    pool.start(4);
 //    std::this_thread::sleep_for(std::chrono::seconds(5));
     getchar();
+#endif
     return 0;
 }
  

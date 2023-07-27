@@ -9,10 +9,20 @@
 /* Begin PBXBuildFile section */
 		44201A1E29A2277100C456AB /* threadpool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44201A1C29A2277100C456AB /* threadpool.cpp */; };
 		4481AC0E28FEA21700B2676D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4481AC0D28FEA21700B2676D /* main.cpp */; };
+		44CE71EC2A6FE13800F71E54 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44CE71EB2A6FE13800F71E54 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		4481AC0828FEA21700B2676D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		44CE71E72A6FE13800F71E54 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -28,10 +38,20 @@
 		44201A1D29A2277100C456AB /* threadpool.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = threadpool.hpp; sourceTree = "<group>"; };
 		4481AC0A28FEA21700B2676D /* ThreadPool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ThreadPool; sourceTree = BUILT_PRODUCTS_DIR; };
 		4481AC0D28FEA21700B2676D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		44CE71E92A6FE13800F71E54 /* ThreadPool2.0 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ThreadPool2.0; sourceTree = BUILT_PRODUCTS_DIR; };
+		44CE71EB2A6FE13800F71E54 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		44CE71F12A71586300F71E54 /* threadpool.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = threadpool.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		4481AC0728FEA21700B2676D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44CE71E62A6FE13800F71E54 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				4481AC0C28FEA21700B2676D /* ThreadPool */,
+				44CE71EA2A6FE13800F71E54 /* ThreadPool2.0 */,
 				4481AC0B28FEA21700B2676D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				4481AC0A28FEA21700B2676D /* ThreadPool */,
+				44CE71E92A6FE13800F71E54 /* ThreadPool2.0 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -65,6 +87,15 @@
 				44201A1D29A2277100C456AB /* threadpool.hpp */,
 			);
 			path = ThreadPool;
+			sourceTree = "<group>";
+		};
+		44CE71EA2A6FE13800F71E54 /* ThreadPool2.0 */ = {
+			isa = PBXGroup;
+			children = (
+				44CE71EB2A6FE13800F71E54 /* main.cpp */,
+				44CE71F12A71586300F71E54 /* threadpool.hpp */,
+			);
+			path = ThreadPool2.0;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +118,23 @@
 			productReference = 4481AC0A28FEA21700B2676D /* ThreadPool */;
 			productType = "com.apple.product-type.tool";
 		};
+		44CE71E82A6FE13800F71E54 /* ThreadPool2.0 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44CE71ED2A6FE13800F71E54 /* Build configuration list for PBXNativeTarget "ThreadPool2.0" */;
+			buildPhases = (
+				44CE71E52A6FE13800F71E54 /* Sources */,
+				44CE71E62A6FE13800F71E54 /* Frameworks */,
+				44CE71E72A6FE13800F71E54 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ThreadPool2.0;
+			productName = ThreadPool2.0;
+			productReference = 44CE71E92A6FE13800F71E54 /* ThreadPool2.0 */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -98,6 +146,9 @@
 				TargetAttributes = {
 					4481AC0928FEA21700B2676D = {
 						CreatedOnToolsVersion = 14.0.1;
+					};
+					44CE71E82A6FE13800F71E54 = {
+						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
@@ -115,6 +166,7 @@
 			projectRoot = "";
 			targets = (
 				4481AC0928FEA21700B2676D /* ThreadPool */,
+				44CE71E82A6FE13800F71E54 /* ThreadPool2.0 */,
 			);
 		};
 /* End PBXProject section */
@@ -126,6 +178,14 @@
 			files = (
 				4481AC0E28FEA21700B2676D /* main.cpp in Sources */,
 				44201A1E29A2277100C456AB /* threadpool.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44CE71E52A6FE13800F71E54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44CE71EC2A6FE13800F71E54 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +317,24 @@
 			};
 			name = Release;
 		};
+		44CE71EE2A6FE13800F71E54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		44CE71EF2A6FE13800F71E54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -274,6 +352,15 @@
 			buildConfigurations = (
 				4481AC1228FEA21700B2676D /* Debug */,
 				4481AC1328FEA21700B2676D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44CE71ED2A6FE13800F71E54 /* Build configuration list for PBXNativeTarget "ThreadPool2.0" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44CE71EE2A6FE13800F71E54 /* Debug */,
+				44CE71EF2A6FE13800F71E54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
