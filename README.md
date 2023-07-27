@@ -45,7 +45,6 @@ public:
     MyTask(int begin, int end) : begin_(begin), end_(end){
         
     }
-    //问题一:怎么设置run函数的返回值，可以表示任意类型
     //Java Object 是所有类型的基类
     //C++17 Any类型
     MyAny run() {
