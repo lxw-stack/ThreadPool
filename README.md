@@ -32,7 +32,7 @@ vim mylib.conf # 在其中加入刚才动态库的路径/usr/local/lib/
 ldconfig # 将动态库刷新到 /etc/ld.so.cahce中
 
 # 执行a.out
-/a.out
+./a.out
 
 ```
 #### 使用示例
